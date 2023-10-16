@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db_bewise
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: -p 5484
+    expose:
+      - 5484
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+
+  bewise-junior-test:
+    build: .
+    container_name: app_bewise
+    env_file:
+      - .env
+    depends_on:
+      - db
+    command: ./docker/run.sh ./docker/tmp.sh
+    ports:
+      - '8000:8000'
+
+volumes:
+  postgres_data:

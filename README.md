@@ -24,11 +24,11 @@ make build
 ```
 make run
 ```
-Для подключения к СУБД Postgres используйте:
+Для подключения к БД Postgres используйте:
 ```
 make db_connect
 ```
-или напрямую через консоль
+Подключени к БД Postgres напрямую через консоль:
 ```
 docker-compose exec db bash
 ```

@@ -58,7 +58,7 @@ async def get_questions_from_api(questions_num: int):
     return data
 
 
-@router_questions.get('/get_all_questions')
+@router_questions.get('/')
 async def get_all_questions(session: AsyncSession = Depends(get_async_session)):
     """ Эндпоинт получения всех вопросов из БД """
     query = select(Question)
